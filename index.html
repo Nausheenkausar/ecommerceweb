@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff3e0;
+            color: #5d4037;
+        }
+        header {
+            background-color: #ff7043;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+            background-color: #ffccbc;
+            padding: 1em 0;
+        }
+        nav a {
+            color: #5d4037;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .hero {
+            text-align: center;
+            padding: 2em;
+            background-image: url('https://via.placeholder.com/1200x400?text=Welcome+to+Sweet+Shop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1em;
+            padding: 2em;
+        }
+        .product {
+            border: 1px solid #d7ccc8;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            background-color: white;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .product h3 {
+            margin: 0.5em 0;
+        }
+        .product p {
+            color: #757575;
+        }
+        .product button {
+            background-color: #ff7043;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            margin: 1em 0;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .product button:hover {
+            background-color: #e64a19;
+        }
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: #ff7043;
+            color: white;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sweet Shop</h1>
+        <p>Your one-stop destination for delicious sweets!</p>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class="hero">
+        <h2>Indulge in Sweetness!</h2>
+        <p>Explore our wide range of delightful treats.</p>
+    </div>
+    <section class="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/200?text=Chocolate" alt="Chocolate">
+            <h3>Chocolate Delight</h3>
+            <p>$10.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/200?text=Candy" alt="Candy">
+            <h3>Rainbow Candy</h3>
+            <p>$5.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/200?text=Laddu" alt="Laddu">
+            <h3>Traditional Laddu</h3>
+            <p>$8.99</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/200?text=Barfi" alt="Barfi">
+            <h3>Classic Barfi</h3>
+            <p>$9.99</p>
+            <button>Add to Cart</button>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Sweet Shop. All rights reserved.</p>
+    </footer>
+</body>
+</html>
