@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -83,6 +83,46 @@
             color: white;
             margin-top: 2em;
         }
+        .cart-icon {
+            position: fixed;
+            top: 1em;
+            right: 1em;
+            background-color: #353122; /* Changed color to yellow */
+            color: white;
+            border: none;
+            padding: 1em;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .cart-details {
+            display: none;
+            position: fixed;
+            top: 5em;
+            right: 1em;
+            background-color: #fff3e0;
+            border: 1px solid #d7ccc8;
+            border-radius: 8px;
+            padding: 1em;
+            width: 300px;
+            max-height: 80%;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .cart-details h2 {
+            margin-top: 0;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5em;
+        }
+        .total {
+            font-weight: bold;
+            text-align: right;
+            margin-top: 1em;
+        }
     </style>
 </head>
 <body>
@@ -105,29 +145,75 @@
             <img src="https://raw.githubusercontent.com/Nausheenkausar/ecommerceweb/main/chocolate.jpeg" alt="Chocolate">
             <h3>Chocolate Delight</h3>
             <p>₹10.99</p>
-            <button>Add to Cart</button>
+            <button onclick="addToCart('Chocolate Delight', 10.99)">Add to Cart</button>
         </div>
         <div class="product">
             <img src="https://raw.githubusercontent.com/Nausheenkausar/ecommerceweb/main/rainbow.jpeg" alt="Candy">
             <h3>Rainbow Candy</h3>
             <p>₹5.99</p>
-            <button>Add to Cart</button>
+            <button onclick="addToCart('Rainbow Candy', 5.99)">Add to Cart</button>
         </div>
         <div class="product">
             <img src="https://raw.githubusercontent.com/Nausheenkausar/ecommerceweb/main/laddu.jpeg" alt="Laddu">
             <h3>Traditional Laddu</h3>
             <p>₹8.99</p>
-            <button>Add to Cart</button>
+            <button onclick="addToCart('Traditional Laddu', 8.99)">Add to Cart</button>
         </div>
         <div class="product">
             <img src="https://raw.githubusercontent.com/Nausheenkausar/ecommerceweb/main/barfi.jpeg" alt="Barfi">
             <h3>Classic Barfi</h3>
-            <p>$9.99</p>
-            <button>Add to Cart</button>
+            <p>₹9.99</p>
+            <button onclick="addToCart('Classic Barfi', 9.99)">Add to Cart</button>
         </div>
     </section>
+    <button class="cart-icon" onclick="toggleCart()">🛒</button>
+    <div class="cart-details" id="cart">
+        <h2>Cart</h2>
+        <div id="cart-items"></div>
+        <div class="total" id="total">Total: ₹0.00</div>
+    </div>
     <footer>
         <p>&copy; 2024 Sweet Shop. All rights reserved.</p>
     </footer>
+    <script>
+        const cartItems = [];
+        let totalAmount = 0;
+
+        function addToCart(name, price) {
+            const cart = document.getElementById('cart-items');
+            const cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+            cartItem.innerHTML = `
+                <span>${name} - ₹${price.toFixed(2)}</span>
+                <button onclick="removeFromCart(this, ${price})">Remove</button>
+            `;
+            cart.appendChild(cartItem);
+            cartItems.push({ name, price });
+            totalAmount += price;
+            updateTotal();
+        }
+
+        function removeFromCart(button, price) {
+            const cart = document.getElementById('cart-items');
+            const item = button.parentElement;
+            cart.removeChild(item);
+            totalAmount -= price;
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const total = document.getElementById('total');
+            total.textContent = `Total: ₹${totalAmount.toFixed(2)}`;
+        }
+
+        function toggleCart() {
+            const cart = document.getElementById('cart');
+            if (cart.style.display === 'block') {
+                cart.style.display = 'none';
+            } else {
+                cart.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
